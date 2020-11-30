@@ -1,7 +1,7 @@
 open Belt
 
-// Naive O(n^2): Iterate each index, sorting n remaining elements
-module Naive = {
+// Selection O(n^2): Iterate each index, sorting n remaining elements
+module Selection = {
   let smallest = (items: array<int>) => {
     let acc = (0, Option.getWithDefault(items[0], 0))
 
@@ -11,13 +11,16 @@ module Naive = {
   }
 
   let sort = (items: array<int>) => {
-    let (sorted, _) = Array.reduce(items, ([], items), ((result, rest), _) => {
-      let (minI, min) = smallest(rest)
+    let (result, _) = Array.reduce(items, ([], items), ((sorted, unsorted), _) => {
+      let (minI, min) = smallest(unsorted)
       (
-        Array.concat(result, [min]),
-        Array.concat(Array.slice(rest, ~offset=0, ~len=minI), Array.sliceToEnd(rest, minI + 1)),
+        Array.concat(sorted, [min]),
+        Array.concat(
+          Array.slice(unsorted, ~offset=0, ~len=minI), // left-side
+          Array.sliceToEnd(unsorted, minI + 1), // right-side
+        ),
       )
     })
-    sorted
+    result
   }
 }

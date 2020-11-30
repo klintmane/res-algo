@@ -9,6 +9,6 @@ Js.log2("Search.Binary:", binary)
 
 let unsorted = [4, 3, 6, 1]
 
-let naiveSorted = Sort.Naive.sort(unsorted)
+let selectionSorted = Sort.Selection.sort(unsorted)
 
-Js.log2("Sort.Naive:", naiveSorted)
+Js.log2("Sort.Selection:", selectionSorted)
