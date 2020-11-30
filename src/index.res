@@ -1,3 +1,8 @@
-let x = Search.Binary.find([1, 2, 3, 4], 3)
+let items = [1, 2, 3, 4] // Must be sorted!
+let item = 3
 
-Js.log2("Hello, World!", x)
+let naive = Search.Naive.find(items, item)
+let binary = Search.Binary.find(items, item)
+
+Js.log2("Naive:", naive)
+Js.log2("Binary:", binary)
